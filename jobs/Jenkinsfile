@@ -8,37 +8,11 @@ pipeline {
     appName = "variable" 
   }
   stages {
-
- stage("paso 1"){
-     
+    stage("build") {
       steps {
-          script {			
-                sh '''#!/bin/bash
-                 echo "Hello world" 
-         '''
-        }
+        sh "echo 'Hello World'"
       }
     }
-  }
-  post {
-      always {          
-          deleteDir()
-            sh '''#!/bin/bash
-                 echo "fase always" 
-         '''
-      }
-      success {
-            sh '''#!/bin/bash
-                 echo "fase success" 
-         '''
-        }
-
-      failure {
-            sh '''#!/bin/bash
-                 echo "fase failure" 
-         '''
-      }
-      
   }
 }  
 
