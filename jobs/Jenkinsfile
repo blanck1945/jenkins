@@ -1,5 +1,5 @@
+#!/bin/bash -l
 import groovy.json.JsonSlurperClassic
-
 def jsonParse(def json) {
     new groovy.json.JsonSlurperClassic().parseText(json)
 }
@@ -14,7 +14,7 @@ pipeline {
      
       steps {
           script {			
-           sh "echo 'hola mundo'"
+              bash "echo 'hello world'" 
         }
       }
     }
@@ -22,14 +22,20 @@ pipeline {
   post {
       always {          
           deleteDir()
-           sh "echo 'fase always'"
+            sh '''#!/bin/bash
+                 echo "fase always" 
+         '''
       }
       success {
-            sh "echo 'fase success'"
+            sh '''#!/bin/bash
+                 echo "fase success" 
+         '''
         }
 
       failure {
-            sh "echo 'fase failure'"
+            sh '''#!/bin/bash
+                 echo "fase failure" 
+         '''
       }
       
   }
